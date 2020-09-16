@@ -51,11 +51,10 @@ jobs:
         v_date=$(date "+%Y-%m-%d %H:%M:%S")
         echo $v_date 人人钻:$var
         
-        text="字幕组今日签到, 人人钻:$var"
-        desp="------\n#### 账户信息\n- 用户名称：Ryanjie\n- 人人钻:${var}\n\n------\n"
-        echo $msg
+        text="今日字幕组人人钻剩余：$var"
         
-        curl -s https://sc.ftqq.com/$SCKEY.send?text=${text}?desp=${desp}
+        curl -s https://sc.ftqq.com/$SCKEY.send?text='${text}'"
         echo ''
+        sleep 1
+        
         echo $text
-        echo $desp
