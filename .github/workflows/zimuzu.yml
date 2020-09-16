@@ -24,7 +24,7 @@ jobs:
         ACCOUNT='${{ secrets.ACCOUNT }}'
         PASSWORD='${{ secrets.PASSWORD }}'
         SCKEY='${{ secrets.SCKEY }}'
-        
+        QMSGAPI='${{ secrets.QMSGAPI }}'
         echo ${ACCOUNT}
         echo ${PASSWORD}
         function urlEncode() {
@@ -54,10 +54,10 @@ jobs:
         
         text="今日字幕组人人钻剩余：{$var}"
         desp="------\n- 用户名称：Ryanjie\n- 人人钻：${var}\n\n------\n"
-        curl -s -d 'text={$text}' -d 'desp={$desp}' https://sc.ftqq.com/{$SCKEY}.send
+        curl -d {QMSGAPI}?msg={$text}
         echo ''
         sleep 1
-        curl -s https://qmsg.zendee.cn:443/send/e6f2c5b0021c68f8c70f98219954e717?msg={$text}
+        curl -d "text={$text}&desp={$desp}" -s https://sc.ftqq.com/{$SCKEY}.send
         echo ''
         sleep 1
         echo $text
