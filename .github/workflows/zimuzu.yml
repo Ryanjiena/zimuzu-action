@@ -55,6 +55,7 @@ jobs:
         desp="------\n#### 账户信息\n- 用户名称：Ryanjie\n- 人人钻:${var}\n\n------\n"
         echo $msg
         
-        curl -s https://sc.ftqq.com/$SCKEY.send?text={text}?desp={desp}
+        curl -s https://sc.ftqq.com/$SCKEY.send?text=${text}?desp=${desp}
+        echo ''
         echo $text
         echo $desp
