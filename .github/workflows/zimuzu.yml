@@ -52,12 +52,12 @@ jobs:
         v_date=$(date "+%Y-%m-%d %H:%M:%S")
         echo $v_date 人人钻:$var
         
-        text="今日字幕组人人钻剩余：{$var}"
-        desp="------\n- 用户名称：Ryanjie\n- 人人钻：${var}\n\n------\n"
-        curl -d {QMSGAPI}?msg={$text}
+        text="今日字幕组人人钻剩余：$var"
+        desp="------\n- 用户名称：Ryanjie\n- 人人钻：$var\n\n------\n"
+        curl -d $QMSGAPI?msg=$text
         echo ''
         sleep 1
-        curl -d "text={$text}&desp={$desp}" -s https://sc.ftqq.com/{$SCKEY}.send
+        curl -d "text=$text&desp=$desp" -s https://sc.ftqq.com/$SCKEY.send  > /dev/null
         echo ''
         sleep 1
         echo $text
