@@ -53,7 +53,7 @@ jobs:
         
         text="今日字幕组人人钻剩余：$var"
         
-        curl -s https://sc.ftqq.com/$SCKEY.send?text='${text}'"
+        curl -s https://sc.ftqq.com/$SCKEY.send?text=${text}
         echo ''
         sleep 1
         
