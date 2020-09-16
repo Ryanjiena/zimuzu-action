@@ -23,6 +23,7 @@ jobs:
       run: |
         ACCOUNT='${{ secrets.ACCOUNT }}'
         PASSWORD='${{ secrets.PASSWORD }}'
+        SCKEY='${{ secrets.SCKEY }}'
         echo ${ACCOUNT}
         echo ${PASSWORD}
         function urlEncode() {
@@ -48,6 +49,14 @@ jobs:
         sleep 1
         var=$(curl -s --cookie "$COOKIE" "$DOMAIN/user/user" | grep 'sp3">人人钻' | awk -F'[><]' '{print $5}')
         v_date=$(date "+%Y-%m-%d %H:%M:%S")
-        echo $v_date 人人钻:$var
+        msg="$v_date 人人钻:$var"
+        echo msg
         
-        
+        let url = `https://sc.ftqq.com/$SCKEY.send`
+        let res = await axios.post(url, `text=字幕组签到:${msg}&desp=${msg}`)
+        if (res.data.errmsg == 'success') {
+          console.log('server酱:发送成功')
+        } else {
+          console.log('server酱:发送失败')
+          console.log(res.data)
+        }
