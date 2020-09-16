@@ -49,7 +49,12 @@ jobs:
         sleep 1
         var=$(curl -s --cookie "$COOKIE" "$DOMAIN/user/user" | grep 'sp3">人人钻' | awk -F'[><]' '{print $5}')
         v_date=$(date "+%Y-%m-%d %H:%M:%S")
-        msg="$v_date 人人钻:$var"
+        echo $v_date 人人钻:$var
+        
+        text="字幕组今日签到, 人人钻:$var"
+        desp="------\n#### 账户信息\n- 用户名称：Ryanjie\n- 人人钻:${var}\n\n------\n"
         echo $msg
         
-        curl -s https://sc.ftqq.com/$SCKEY.send?text=$msg
+        curl -s https://sc.ftqq.com/$SCKEY.send?text={text}?desp={desp}
+        echo $text
+        echo $desp
