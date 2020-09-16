@@ -57,7 +57,8 @@ jobs:
         echo $v_date 人人钻:$var
         
         text="今日字幕组人人钻剩余：$var"
-        curl -d "msg=$text"-s "$QMSGAPI"
+        curl -d "msg=$text" -s "$QMSGAPI"
+        echo ''
         echo ''
         sleep 1
         curl -d "text=$text" -s "https://sc.ftqq.com/$SCKEY.send"
