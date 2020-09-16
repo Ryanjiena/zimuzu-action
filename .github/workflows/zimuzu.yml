@@ -24,6 +24,7 @@ jobs:
         ACCOUNT='${{ secrets.ACCOUNT }}'
         PASSWORD='${{ secrets.PASSWORD }}'
         SCKEY='${{ secrets.SCKEY }}'
+        
         echo ${ACCOUNT}
         echo ${PASSWORD}
         function urlEncode() {
@@ -52,9 +53,13 @@ jobs:
         echo $v_date 人人钻:$var
         
         text="今日字幕组人人钻剩余：$var"
-        
-        curl -s https://sc.ftqq.com/$SCKEY.send?text=${text}
+        desp="------\n- 用户名称：Ryanjie\n- 人人钻：${var}\n\n------\n"
+        curl -d 'text=$text' -d 'desp=$desp' https://sc.ftqq.com/{$SCKEY}.send
         echo ''
         sleep 1
-        
+        curl -d https://qmsg.zendee.cn:443/send/e6f2c5b0021c68f8c70f98219954e717?msg={$text}
+        echo ''
+        sleep 1
         echo $text
+        echo $desp
+        
