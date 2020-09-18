@@ -2,12 +2,13 @@ name: zimuzu
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
   schedule:
-    - cron: 0 1,14,22 * * *
-  workflow_dispatch:
+    - cron: 8 4,16 * * *
+  watch:
+    types: started
   
 jobs:
   build:
