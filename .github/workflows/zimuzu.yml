@@ -9,7 +9,10 @@ on:
     - cron: 8 4,16 * * *
   watch:
     types: started
-  
+
+env:
+  TZ: Asia/Shanghai
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -57,7 +60,8 @@ jobs:
         v_date=$(date "+%Y-%m-%d %H:%M:%S")
         echo $v_date 人人钻:$var
         
-        text="今日字幕组人人钻剩余：$var"
+        date=$(date '+%Y-%m-%d %H:%M:%S')
+        text="[${date}] 字幕组人人钻剩余：$var"
         curl -d "msg=$text" -s "$QMSGAPI"
         echo ''
         echo ''
